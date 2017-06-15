@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">Divider</string>
+    <string name="name">Divider, the</string>
+    <string name="slogan">"Upgrade your math skill!"</string>
+    <string name="start_game">Start the game</string>
+    <string name="game_rules">Game rules</string>
+    <string name="difficult_level">Difficult level</string>
+    <string name="is">is</string>
+    <string name="divided_by">divided by</string>
+    <string name="task_number_text_view">"Task "</string>
+    <string name="all_tasks">" from "</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="game_description">A “divisibility rule” is a shorthand way of determining whether a given integer is divisible by a fixed divisor without performing the division,
+        usually by examining its digits.\n
+        Button “New Game” starts new game session. Every session continues twenty five seconds - you can see timer below buttons “Yes” and “No”.
+        There are several tasks in each game session. In every task of this game on the screen random digit and random divider appears.\n
+        You should examine the digit and determine – is the digit divided by the divider without a trace? If answer is correct, score will increase, if answer is incorrect score won`t change.\n
+        When attempts end, result of the game appears on the display. The app chooses from the next dividers: 2, 3, 5, 9, 10, 11, 25.
+        Number of attempts and the sample size digits depend on difficult level. You can change difficult level in main screen.
+        You can see divisibility rules for each using divider below.\n
+        If divider is 2: The last digit is zero even (0, 2, 4, 6, or 8). For example: 1294: 4 is even.\n
+        If divider is 3: Sum the digits. The result must be divisible by 3. For example: 405 → 4 + 0 + 5 = 9. It`s clearly divisible by 3.\n
+        If divider is 5: The last digit is 0 or 5. For example: 495: the last digit is 5.\n
+        If divider is 9: Sum the digits. The result must be divisible by 9. For example: 2880: 2 + 8 + 8 + 0 = 18: 1 + 8 = 9.\n
+        If divider is 10: The last digit is 0. For example: 130: the last digit is 0.\n
+        If divider is 11: Sum of digits on the odd position is equals to sum of digits on the even position.
+        For example: 1573: 1 + 7 = 8 and 5 + 3 = 8. 1573 is clearly divisible by 11.\n
+        If divider is 25: The number formed by the last two digits is divisible by 25 or there are two zeroes. For example: 134 250: 50 is divisible by 25 (or 134200).</string>
+    <string name="main_menu">Main menu</string>
+    <string name="your_result_is">Your result is</string>
+    <string name="try_again">Try again</string>
+    <string name="your_score">"Your score: "</string>
+    <string name="disclaimer_bad_result">Not really...\n Can once again?</string>
+    <string name="disclaimer_poor_result">Not bad!\n But you can better.</string>
+    <string name="disclaimer_good_result">Good job!</string>
+    <string name="disclaimer_excellent_result">Excellent! :)</string>
+    <string name="choose_difficult_level">Choose difficult level</string>
+    <string name="it_s">"It`s "</string>
+    <string name="sample_size">". The sample size is "</string>
+    <string name="number_of_attempts">". Numbers of tasks: "</string>
+    <string name="ok">OK</string>
+    <string name="easy">easy level</string>
+    <string name="normal">normal level</string>
+    <string name="hard">hard level</string>
+    <string name="dif_btn_level_is_easy">Difficult level is easy</string>
+    <string name="dif_btn_level_is_normal">Difficult level is normal</string>
+    <string name="dif_btn_level_is_hard">Difficult level is hard</string>
+    <string name="remaining_time">"Remaining time: "</string>
+</resources>

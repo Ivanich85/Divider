@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:weightSum="100"
+    tools:context="com.dmitriev.ivand.divider.ActivityGameRules">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="5"
+        android:padding="2dp"
+        android:text="@string/game_rules"
+        android:textAlignment="center"
+        android:textColor="@color/header"
+        android:textSize="@dimen/big" />
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="90">
+    <TextView
+        android:layout_marginTop="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:padding="2dp"
+        android:paddingBottom="3dp"
+        android:text="@string/game_description"
+        android:textColor="@color/black"
+        android:textSize="@dimen/normal" />
+    </ScrollView>
+
+    <Button
+        android:layout_marginTop="5dp"
+        android:id="@+id/main_menu_button"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="5"
+        android:background="@drawable/optionbuttons"
+        android:padding="2dp"
+        android:text="@string/main_menu"
+        android:textAllCaps="false"
+        android:textColor="@color/optionButtons"
+        android:textSize="@dimen/normal" />
+</LinearLayout>

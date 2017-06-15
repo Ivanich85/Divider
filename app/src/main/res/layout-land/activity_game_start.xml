@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dmitriev.ivand.divider.ActivityGameStart">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/divident_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="32"
+            android:padding="8dp"
+            android:textColor="@color/mainButtons"
+            android:textColorHint="@color/mainButtons"
+            android:textSize="@dimen/large" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/is"
+            android:textColor="@color/black"
+            android:textSize="@dimen/large" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/divided_by"
+            android:textColor="@color/black"
+            android:textSize="@dimen/large" />
+
+        <TextView
+            android:id="@+id/divider_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="3"
+            android:padding="8dp"
+            android:textColor="@color/mainButtons"
+            android:textColorHint="@color/mainButtons"
+            android:textSize="@dimen/large" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/task_number_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="@dimen/normal"
+        android:hint="@string/task_number_text_view"
+        android:layout_alignBaseline="@+id/score_text_view"
+        android:layout_alignBottom="@+id/score_text_view"
+        android:layout_alignLeft="@+id/yes_button"
+        android:layout_alignStart="@+id/yes_button"/>
+
+    <TextView
+        android:id="@+id/score_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Your score: 1 / 10"
+        android:textColor="@color/black"
+        android:textSize="@dimen/normal"
+        android:textAlignment="center"
+        android:layout_above="@+id/no_button"
+        android:layout_alignRight="@+id/no_button"
+        android:layout_alignEnd="@+id/no_button"
+        android:layout_marginBottom="32dp"/>
+
+    <Button
+        android:id="@+id/yes_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/no_button"
+        android:layout_alignBottom="@+id/no_button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp"
+        android:width="220dp"
+        android:background="@drawable/yesbutton"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp"
+        android:text="@string/yes"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/big" />
+
+    <Button
+        android:id="@+id/no_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="56dp"
+        android:layout_marginRight="32dp"
+        android:width="220dp"
+        android:background="@drawable/nobutton"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp"
+        android:text="@string/no"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/big" />
+
+    <TextView
+        android:id="@+id/timer_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/normal"
+        android:textColor="@color/black"
+        android:layout_marginBottom="8dp"
+        android:layout_above="@+id/score_text_view"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>

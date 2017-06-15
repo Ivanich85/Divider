@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.dmitriev.ivand.divider.ActivityMainMenu">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:padding="4dp"
+        android:text="@string/name"
+        android:textColor="@color/header"
+        android:textSize="@dimen/header" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="4dp"
+        android:padding="4dp"
+        android:text="@string/slogan"
+        android:textColor="@color/header" />
+
+    <Button
+        android:id="@+id/game_start_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/game_rules_button"
+        android:layout_alignLeft="@+id/game_rules_button"
+        android:layout_alignRight="@+id/game_rules_button"
+        android:layout_alignStart="@+id/game_rules_button"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/mainbuttons"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp"
+        android:text="@string/start_game"
+        android:textAllCaps="false"
+        android:textColor="@color/mainButtons"
+        android:textSize="@dimen/big"
+        android:visibility="invisible"/>
+
+    <Button
+        android:id="@+id/game_rules_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/game_start_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/mainbuttons"
+        android:paddingBottom="4dp"
+        android:paddingLeft="40dp"
+        android:paddingRight="32dp"
+        android:paddingTop="4dp"
+        android:text="@string/game_rules"
+        android:textAllCaps="false"
+        android:textColor="@color/mainButtons"
+        android:textSize="@dimen/big"
+        android:visibility="invisible"/>
+
+    <Button
+        android:id="@+id/difficult_level_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/game_rules_button"
+        android:layout_alignLeft="@+id/game_rules_button"
+        android:layout_alignRight="@+id/game_rules_button"
+        android:layout_alignStart="@+id/game_rules_button"
+        android:layout_below="@+id/game_rules_button"
+        android:layout_marginTop="96dp"
+        android:background="@drawable/optionbuttons"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp"
+        android:text="@string/difficult_level"
+        android:textAllCaps="false"
+        android:textColor="@color/optionButtons"
+        android:textSize="@dimen/normal"
+        android:visibility="invisible"/>
+</RelativeLayout>

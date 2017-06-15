@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.dmitriev.ivand.divider.ActivityGameStart">
+
+    <TextView
+        android:id="@+id/divident_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:hint="32"
+        android:textAlignment="center"
+        android:textColor="@color/mainButtons"
+        android:textColorHint="@color/mainButtons"
+        android:textSize="@dimen/large"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/divident_text_view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:text="@string/is"
+        android:textColor="@color/black"
+        android:textSize="@dimen/large"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:text="@string/divided_by"
+        android:textColor="@color/black"
+        android:textSize="@dimen/large"/>
+
+    <TextView
+        android:id="@+id/divider_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:hint="3"
+        android:textAlignment="center"
+        android:textColor="@color/mainButtons"
+        android:textColorHint="@color/mainButtons"
+        android:textSize="@dimen/large"/>
+
+    <TextView
+        android:id="@+id/task_number_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/yes_button"
+        android:layout_alignStart="@+id/yes_button"
+        android:layout_alignTop="@+id/score_text_view"
+        android:hint="@string/task_number_text_view"
+        android:textColor="@color/black"
+        android:textSize="@dimen/normal"/>
+
+    <TextView
+        android:id="@+id/score_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/no_button"
+        android:layout_alignEnd="@+id/no_button"
+        android:layout_alignRight="@+id/no_button"
+        android:layout_marginBottom="32dp"
+        android:hint="Your score: 1 / 10"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/normal"/>
+
+    <Button
+        android:id="@+id/yes_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/no_button"
+        android:layout_alignBottom="@+id/no_button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="28dp"
+        android:width="130dp"
+        android:background="@drawable/yesbutton"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp"
+        android:text="@string/yes"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/big"/>
+
+    <Button
+        android:id="@+id/no_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="56dp"
+        android:layout_marginRight="24dp"
+        android:width="130dp"
+        android:background="@drawable/nobutton"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp"
+        android:text="@string/no"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/big"/>
+
+    <TextView
+        android:id="@+id/timer_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/score_text_view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/normal"/>
+
+</RelativeLayout>

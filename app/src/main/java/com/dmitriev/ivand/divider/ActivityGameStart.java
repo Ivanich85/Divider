@@ -1,5 +1,7 @@
-package com.example.ivand.divider;
+package com.dmitriev.ivand.divider;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,10 +9,12 @@ import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
-
 import java.util.Random;
 
 public class ActivityGameStart extends AppCompatActivity {
@@ -29,56 +33,54 @@ public class ActivityGameStart extends AppCompatActivity {
     private TextView mTaskNumberTextView;
     private TextView mTimerTextView;
 
+    private static final String TAG = "ActivityGameStart";
+    private static final String TAG2 = "ActivityGame";
+    private static final String PAIRS_NUMBER = "DividerPairsNumber";
+
+    //Timer defined
+    private CountDownTimer mTimer;
+
     //The variables define number of object into mDividerBank array, number of task and user`s score respectively
     private int mCurrentIndex = 0;
     private int mTaskNumber = mCurrentIndex + 1;
     private int mScore = 0;
-    private static final String TASK_NUMBER = "task";
-    private static final String USER_SCORE = "result";
 
     //The variables define mDividerBank length, number of integers for random object and remain time. It can be changed by difficult level
     private int mDividerBankLength;
     private int mDividerDifficult;
-    private int mRemainTime;
-
-    //Timer for every task
-    private void timer(int remainTime){
-        CountDownTimer mTimer = new CountDownTimer(mRemainTime, 1000) {
-            public void onTick(long millisUntilFinished) {
-                mTimerTextView.setText(millisUntilFinished / 1000 + "");
-            }
-            public void onFinish() {
-                Intent toActivityResult = new Intent();
-                toActivityResult.setClass(ActivityGameStart.this, ActivityResult.class);
-                toActivityResult.putExtra("userScore", mScore);
-                toActivityResult.putExtra("NumberOfTask", mDividerBank.length + 1);
-                startActivity(toActivityResult);
-            }
-        };
-        mTimer.start();
-    }
+    private final long REMAIN_TIME = 26000;
 
     //The arrays define array of dividers and array of Divider`s class objects
     private int[] mDividersArray = {2, 3, 5, 9, 10, 11, 25};
     private Divider[] mDividerBank;
 
     //The method loads preferences from "DIF_LEVEL"
-    private int loadPreferencesForNumbersQuantity(int numbersQuantity) {
+    private int loadPreferencesForNumbersQuantity() {
         SharedPreferences mySharedPreferences = getSharedPreferences("DIF_LEVEL", Context.MODE_PRIVATE);
-        numbersQuantity = mySharedPreferences.getInt("numbers quantity", 200);
-        return numbersQuantity;
-    }
-    private int loadPreferencesForNumberOfDividers(int difficult) {
-        SharedPreferences mySharedPreferences = getSharedPreferences("DIF_LEVEL", Context.MODE_PRIVATE);
-        difficult = mySharedPreferences.getInt("array length", 10);
-        return difficult;
+        return mySharedPreferences.getInt("numbers quantity", 200);
     }
 
     //The method loads preferences from "DIF_LEVEL"
-    private int loadPreferencesForTimer(int remainTime) {
+    private int loadPreferencesForNumberOfDividers() {
         SharedPreferences mySharedPreferences = getSharedPreferences("DIF_LEVEL", Context.MODE_PRIVATE);
-        remainTime = mySharedPreferences.getInt("remain time", 26000);
-        return remainTime;
+        return mySharedPreferences.getInt("array length", 10);
+    }
+
+    //The method for timer
+    private void startTimer(long time) {
+        mTimer = new CountDownTimer(time, 1000) {
+            public void onTick(long millisUntilFinished) {
+                mTimerTextView.setText(getText(R.string.remaining_time).toString() + millisUntilFinished / 1000 + "");
+            }
+            public void onFinish() {
+                Intent toActivityResult = new Intent();
+                toActivityResult.setClass(ActivityGameStart.this, ActivityResult.class);
+                toActivityResult.putExtra("userScore", mScore);
+                toActivityResult.putExtra("NumberOfTask", mDividerBankLength);
+                startActivity(toActivityResult);
+                finish();
+            }
+        }.start();
     }
 
     //This method fills mDividerBank array
@@ -94,14 +96,14 @@ public class ActivityGameStart extends AppCompatActivity {
         if (mTaskNumber <= mDividerBank.length) {
             mTaskNumberTextView.setText(this.getString(R.string.task_number_text_view) + mTaskNumber +
                     this.getString(R.string.all_tasks) + mDividerBankLength + "");
-            mDividendTextView.setText(mDividerBank[mCurrentIndex].getDividend() + "");
-            mDividerTextView.setText(mDividerBank[mCurrentIndex].getDivider() + "");
-            mScoreTextView.setText(this.getString(R.string.your_score) + mScore);
+            mDividendTextView.setText(String.valueOf(mDividerBank[mCurrentIndex].getDividend()));
+            mDividerTextView.setText(String.valueOf(mDividerBank[mCurrentIndex].getDivider()));
+            mScoreTextView.setText(String.valueOf(this.getString(R.string.your_score) + (mScore)));
+            Log.d(PAIRS_NUMBER, "Divider pair number is " + mTaskNumber);
         }
     }
 
     //This method checks user answer and compares it with correct one
-    //It`s sample code for Git
     private void userChoice(boolean pressedButton) {
         boolean answerIsTrue = mDividerBank[mCurrentIndex].isDivide();
         if (pressedButton == answerIsTrue) {
@@ -117,39 +119,36 @@ public class ActivityGameStart extends AppCompatActivity {
     //This method inspects number of attempts and start ActivityResult if necessary
     private void goToActivityResult(int attempt) {
         if (attempt > mDividerBank.length) {
+            mTimer.cancel();
             Intent toActivityResult = new Intent();
             toActivityResult.setClass(this, ActivityResult.class);
             toActivityResult.putExtra("userScore", mScore);
-            toActivityResult.putExtra("NumberOfTask", mTaskNumber);
+            toActivityResult.putExtra("NumberOfTask", mTaskNumber - 1);
             startActivity(toActivityResult);
+            finish();
         }
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (savedInstanceState != null) {
-            mTaskNumber = savedInstanceState.getInt(TASK_NUMBER, 0);
-            mScore = savedInstanceState.getInt(USER_SCORE, 0);
-        }
         setContentView(R.layout.activity_game_start);
-        mRemainTime = loadPreferencesForTimer(mRemainTime);
-        mDividerBankLength = loadPreferencesForNumberOfDividers(mDividerBankLength);
-        mDividerDifficult = loadPreferencesForNumbersQuantity(mDividerDifficult);
-        timer(mRemainTime);
+        mDividerBankLength = loadPreferencesForNumberOfDividers();
+        mDividerDifficult = loadPreferencesForNumbersQuantity();
         mDividerBank = new Divider[mDividerBankLength];
+        startTimer(REMAIN_TIME);
+        Log.d(TAG2, "Timer started");
         initViews();
         dividerList();
         actionViews();
         updateDividers();
     }
 
-    //The method save mTaskNumber and mScore while screen rotation.
     @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
-        savedInstanceState.putInt(TASK_NUMBER, mTaskNumber);
-        savedInstanceState.putInt(USER_SCORE, mScore);
+    public void onBackPressed() {
+        super.onBackPressed();
+        mTimer.cancel();
+        Log.d(TAG, "onBackPressed() called");
     }
 
     //This method initiates views into ActivityGameStart
@@ -173,6 +172,7 @@ public class ActivityGameStart extends AppCompatActivity {
                 userChoice(true);
                 updateDividers();
                 goToActivityResult(mTaskNumber);
+                Log.d(TAG2, "Button \"Yes\" pressed");
             }
         });
 
@@ -182,6 +182,7 @@ public class ActivityGameStart extends AppCompatActivity {
                 userChoice(false);
                 updateDividers();
                 goToActivityResult(mTaskNumber);
+                Log.d(TAG2, "Button \"No\" pressed");
             }
         });
     }

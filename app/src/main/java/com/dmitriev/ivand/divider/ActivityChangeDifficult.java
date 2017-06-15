@@ -1,4 +1,4 @@
-package com.example.ivand.divider;
+package com.dmitriev.ivand.divider;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,10 +7,8 @@ import android.media.MediaPlayer;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.style.TtsSpan;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -25,8 +23,6 @@ public class ActivityChangeDifficult extends AppCompatActivity {
     MediaPlayer mButtonSoundPlayer;
 
     private String difficult;
-    public final String mLevelPreference = "DIF_LEVEL";
-
 
     //The method starts ActivityMainMenu
     private void goToActivityMainMenu() {
@@ -36,13 +32,13 @@ public class ActivityChangeDifficult extends AppCompatActivity {
     }
 
     //The method saves difficult level preference
-    private void savePreferences(int preference, int arrayLength, int numbersQuantity, int remainingTime) {
-        SharedPreferences mDifficultLevel = getSharedPreferences(mLevelPreference, Context.MODE_PRIVATE);
+    private void savePreferences(int preference, int arrayLength, int numbersQuantity) {
+        String LEVEL_PREFERENCES = "DIF_LEVEL";
+        SharedPreferences mDifficultLevel = getSharedPreferences(LEVEL_PREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor mEditor = mDifficultLevel.edit();
         mEditor.putInt("difficult level", preference);
         mEditor.putInt("array length", arrayLength);
         mEditor.putInt("numbers quantity", numbersQuantity);
-        mEditor.putInt("remain time", remainingTime);
         mEditor.apply();
     }
 
@@ -63,6 +59,7 @@ public class ActivityChangeDifficult extends AppCompatActivity {
             public void onClick(View v) {
                 mButtonSoundPlayer.start();
                 goToActivityMainMenu();
+                finish();
             }
         });
     }
@@ -71,26 +68,22 @@ public class ActivityChangeDifficult extends AppCompatActivity {
     private void printLevelDescription(int level) {
         int mNumbersQuantity = 0;
         int mDividersQuantity = 0;
-        int mRemainTime = 0;
         if (level == 1) {
             mNumbersQuantity = 200;
             mDividersQuantity = 10;
-            mRemainTime = 15;
             difficult = getString(R.string.easy);
         } else if (level == 2) {
             mNumbersQuantity = 300;
             mDividersQuantity = 15;
-            mRemainTime = 17;
             difficult = getString(R.string.normal);
         } else if (level == 3) {
             mNumbersQuantity = 400;
             mDividersQuantity = 20;
-            mRemainTime = 15;
             difficult = getString(R.string.hard);
         }
         mLevelDescriptionTextView.setText(getString(R.string.it_s) + difficult +
                 getString(R.string.sample_size) + mNumbersQuantity + getString(R.string.number_of_attempts) +
-                mDividersQuantity + getString(R.string.time_is) + mRemainTime + getString(R.string.sec));
+                mDividersQuantity);
     }
 
     //The method initiates views
@@ -109,27 +102,23 @@ public class ActivityChangeDifficult extends AppCompatActivity {
                 int mBtnID = 0;
                 int mArrLength = 0;
                 int mNumbersQuantity = 0;
-                int mRemainingTime = 0;
                 if (checkedId == R.id.easy_level_radio_button) {
                     mButtonSoundPlayer.start();
                     mBtnID = 1;
                     mArrLength = 10;
                     mNumbersQuantity = 200;
-                    mRemainingTime = 16000;
                 } else if (checkedId == R.id.normal_level_radio_button) {
                     mButtonSoundPlayer.start();
                     mBtnID = 2;
                     mArrLength = 15;
                     mNumbersQuantity = 300;
-                    mRemainingTime = 18000;
                 } else if (checkedId == R.id.hard_level_radio_button) {
                     mButtonSoundPlayer.start();
                     mBtnID = 3;
                     mArrLength = 20;
                     mNumbersQuantity = 400;
-                    mRemainingTime = 16000;
                 }
-                savePreferences(mBtnID, mArrLength, mNumbersQuantity, mRemainingTime);
+                savePreferences(mBtnID, mArrLength, mNumbersQuantity);
                 printLevelDescription(mBtnID);
             }
         });

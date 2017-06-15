@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dmitriev.ivand.divider.ActivityChangeDifficult"
+    android:orientation="vertical"
+    android:weightSum="100">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="20"
+        android:textAlignment="center"
+        android:text="@string/choose_difficult_level"
+        android:textSize="@dimen/big"
+        android:padding="5dp"
+        android:textColor="@color/black"/>
+
+    <RadioGroup
+        android:id="@+id/change_difficult_level_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="55"
+        android:gravity="center_horizontal">
+
+        <RadioButton
+            android:id="@+id/easy_level_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/easy"
+            android:textColor="@color/green"
+            android:textSize="@dimen/big"/>
+
+        <RadioButton
+            android:id="@+id/normal_level_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/normal"
+            android:textColor="@color/header"
+            android:textSize="@dimen/big"/>
+
+        <RadioButton
+            android:id="@+id/hard_level_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/hard"
+            android:textColor="@color/red"
+            android:textSize="@dimen/big"/>
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/level_description_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="15"
+        android:textAlignment="center"
+        android:textSize="@dimen/normal"
+        android:textColor="@color/black"
+        android:padding="5dp"/>
+    <Button
+        android:id="@+id/ok_button"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="10"
+        android:background="@drawable/optionbuttons"
+        android:padding="1dp"
+        android:text="@string/ok"
+        android:textAllCaps="false"
+        android:textColor="@color/optionButtons"
+        android:textSize="@dimen/normal"/>
+</LinearLayout>
